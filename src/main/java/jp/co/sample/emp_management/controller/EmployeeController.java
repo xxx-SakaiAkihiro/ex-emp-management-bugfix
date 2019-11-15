@@ -23,7 +23,7 @@ import jp.co.sample.emp_management.service.EmployeeService;
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
-
+	
 	@Autowired
 	private EmployeeService employeeService;
 	
