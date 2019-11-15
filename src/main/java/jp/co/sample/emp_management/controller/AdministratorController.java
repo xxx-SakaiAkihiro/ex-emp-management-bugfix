@@ -62,26 +62,29 @@ public class AdministratorController {
 	}
 
 	/**
-	 * 管理者情報を登録します.
 	 * 
-	 * @param form
-	 *            管理者情報用フォーム
+	 * 管理者情報を登録します.
+	 * @param form 管理者情報用フォーム
+	 * @param result エラー情報格納用オブッジェクト
+	 * @param model requestスコープ
 	 * @return ログイン画面へリダイレクト
 	 */
 	@RequestMapping("/insert")
-	public String insert(
-		@Validated InsertAdministratorForm form,BindingResult result,Model model) {
+	public String insert(@Validated InsertAdministratorForm form,BindingResult result,Model model) {
 		if(result.hasErrors()) {
 			return toInsert();
 		}
-		
 		Administrator administrator = new Administrator();
 		// フォームからドメインにプロパティ値をコピー
 		BeanUtils.copyProperties(form, administrator);
-		
+		//メールアドレスの重複チェック
 		Administrator administratorMailAddress  = administratorService.findByMailAddress(form.getMailAddress());
 		if(administratorMailAddress != null) {
 			result.rejectValue("mailAddress", "null","メールアドレスが重複しています");
+		}
+		//確認用パスワードのチェック
+		if(form.getPassword() != form.getConPassword()) {
+			result.rejectValue("conPassword", "null","パスワードと確認用パスワードが異なります");
 		}
 		if(result.hasErrors()) {
 			return toInsert();
