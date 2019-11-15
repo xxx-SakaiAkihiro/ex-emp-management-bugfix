@@ -86,11 +86,11 @@
 										<label for="passwaord">
 											確認用パスワード:
 										</label>
-										<label th:if="${#fields.hasErrors('conPassword')}" th:errors="*{conPassword}" class="error-messages">
+										<label th:if="${#fields.hasErrors('confirmationPassword')}" th:errors="*{confirmationPassword}" class="error-messages">
 											確認用パスワードを入力してください
 										</label>
-										<input type="password" name="conPassword" id="conPassword" class="form-control" placeholder="password"
-											 th:field="*{conPassword}" th:errorclass="error-input" value="xxxxxxxx">
+										<input type="password" name="confirmationPassword" id="confirmationPassword" class="form-control" placeholder="password"
+											 th:field="*{confirmationPassword}" th:errorclass="error-input" value="xxxxxxxx">
 									</div>
 								</div>
 							</div>

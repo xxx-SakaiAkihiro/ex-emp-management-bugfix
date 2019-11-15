@@ -20,7 +20,7 @@ public class InsertAdministratorForm {
 	private String password;
 	/** 確認用パスワード */
 	@NotBlank(message = "確認用パスワードの入力は必須です")
-	private String conPassword;
+	private String confirmationPassword;
 
 	public String getName() {
 		return name;
@@ -46,18 +46,18 @@ public class InsertAdministratorForm {
 		this.password = password;
 	}
 
-	public String getConPassword() {
-		return conPassword;
+	public String getConfirmationPassword() {
+		return confirmationPassword;
 	}
 
-	public void setConPassword(String conPassword) {
-		this.conPassword = conPassword;
+	public void setConfirmationPassword(String confirmationPassword) {
+		this.confirmationPassword = confirmationPassword;
 	}
 
 	@Override
 	public String toString() {
 		return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
-				+ ", conPassword=" + conPassword + "]";
+				+ ", confirmationPassword=" + confirmationPassword + "]";
 	}
 
 }
