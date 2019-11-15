@@ -92,4 +92,22 @@ public class EmployeeController {
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
 	}
+	
+	/////////////////////////////////////////////////////
+	// ユースケース：従業員を曖昧検索する
+	/////////////////////////////////////////////////////
+	/**
+	 * 従業員を曖昧検索する.
+	 * 
+	 * @param name 従業員名
+	 * @param model モデル
+	 * @return 従業員一覧にフォワード
+	 */
+	@RequestMapping("/search")
+	public String serchEmployeeByLikeName(String name,Model model) {
+		List<Employee> employeeList = employeeService.findByLikeName(name);
+		model.addAttribute("employeeList", employeeList);
+		return "employee/list";
+	}
+	
 }
